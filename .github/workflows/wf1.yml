@@ -6,8 +6,8 @@ on:
       cell:
         description: "Output cell text"
         value: ${{ jobs.reusable_job_1.outputs.output1 }}
-  
- jobs:
+
+jobs:
   reusable_job_1:
     name: Re-usable job 1
     runs-on: ubuntu-latest
