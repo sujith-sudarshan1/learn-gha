@@ -1,0 +1,12 @@
+name: Workflow 1
+
+on:
+  workflow_call:
+  
+ jobs:
+  reusable_job_1:
+    name: Re-usable job 1
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo $EVENT_CONTEXT
