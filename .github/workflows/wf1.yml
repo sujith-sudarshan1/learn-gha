@@ -12,9 +12,7 @@ on:
     name: Re-usable job 1
     runs-on: ubuntu-latest
     outputs:
-      celloutput: ${{ steps.step1.outputs.}}
-        description: "Output cell text"
-        value: ${{ jobs.reusable_job_1.outputs.celloutput }}
+      celloutput: ${{ steps.step1.outputs.cell }}
     steps:
       - id: step1
         run: |
