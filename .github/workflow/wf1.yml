@@ -2,11 +2,20 @@ name: Workflow 1
 
 on:
   workflow_call:
+    outputs:
+      cell:
+        description: "Output cell text"
+        value: ${{ jobs.reusable_job_1.outputs.celloutput }}
   
  jobs:
   reusable_job_1:
     name: Re-usable job 1
     runs-on: ubuntu-latest
+    outputs:
+      celloutput: ${{ steps.step1.outputs.}}
+        description: "Output cell text"
+        value: ${{ jobs.reusable_job_1.outputs.celloutput }}
     steps:
-      - run: |
-          echo "test"
+      - id: step1
+        run: |
+          echo "test" >> $GITHUB_OUTPUT
