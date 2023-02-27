@@ -16,4 +16,4 @@ on:
     steps:
       - id: step1
         run: |
-          echo "test" >> $GITHUB_OUTPUT
+          echo "cell=test" >> $GITHUB_OUTPUT
