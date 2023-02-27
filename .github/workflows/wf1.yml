@@ -5,14 +5,14 @@ on:
     outputs:
       cell:
         description: "Output cell text"
-        value: ${{ jobs.reusable_job_1.outputs.celloutput }}
+        value: ${{ jobs.reusable_job_1.outputs.output1 }}
   
  jobs:
   reusable_job_1:
     name: Re-usable job 1
     runs-on: ubuntu-latest
     outputs:
-      celloutput: ${{ steps.step1.outputs.cell }}
+      output1: ${{ steps.step1.outputs.cell }}
     steps:
       - id: step1
         run: |
