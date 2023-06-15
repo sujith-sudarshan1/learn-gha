@@ -19,7 +19,7 @@ jobs:
     needs: deploy_dev
     uses: ./.github/workflows/reusable_env_action.yml
     with:
-      environment: prod
+      environment: test
     secrets:
       SOME_PASSWORD: ${{ secrets.SOME_PASSWORD }}
       OTHER_PASSWORD: ${{ secrets.OTHER_PASSWORD }}
