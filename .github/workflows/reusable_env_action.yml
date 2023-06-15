@@ -1,0 +1,61 @@
+name: Env based reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: "Environment"
+        type: "string"
+        required: true
+    secrets:
+      SOME_PASSWORD:
+        description: "Some password"
+        required: true
+      OTHER_PASSWORD:
+        description: "Other password"
+        required: true
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        type: environment
+
+jobs:
+  reusable_job_1:
+    name: Re-usable job 1
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - id: step1
+        env:
+          SOME_PASSWORD: ${{ secrets.SOME_PASSWORD }}
+          OTHER_PASSWORD: ${{ secrets.OTHER_PASSWORD }}
+        run: |
+          echo "$SOME_PASSWORD"
+          if [[ $SOME_PASSWORD == "some_dev_password" ]]; then
+            echo "This is the DEV password!"
+          else
+            echo "This is NOT the DEV password!"
+          fi
+
+          echo "$SOME_PASSWORD"
+          if [[ $SOME_PASSWORD == "some_test_password" ]]; then
+            echo "This is the TEST password!"
+          else
+            echo "This is NOT the TEST password!"
+          fi
+
+          echo "$OTHER_PASSWORD"
+          if [[ $OTHER_PASSWORD == "other_dev_password" ]]; then
+            echo "This is the DEV password!"
+          else
+            echo "This is NOT the DEV password!"
+          fi
+
+          echo "$OTHER_PASSWORD"
+          if [[ $OTHER_PASSWORD == "other_test_password" ]]; then
+            echo "This is the TEST password!"
+          else
+            echo "This is NOT the TEST password!"
+          fi
