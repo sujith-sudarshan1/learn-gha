@@ -1,0 +1,18 @@
+
+name: Call env based reusable workflow using environment strategy matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Dev
+    uses: ./.github/workflows/reusable_env_action.yml
+    strategy:
+      matrix:
+        environment: [dev, test]
+    with:
+      environment: ${{ matrix.environment }}
+    secrets:
+      SOME_PASSWORD: ${{ secrets.SOME_PASSWORD }}
+      OTHER_PASSWORD: ${{ secrets.OTHER_PASSWORD }}
