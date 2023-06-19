@@ -21,6 +21,9 @@ on:
         description: "Environment"
         type: environment
 
+permissions:
+  pull-requests: write
+
 jobs:
   reusable_job_1:
     name: Re-usable job 1
