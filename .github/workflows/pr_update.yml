@@ -8,9 +8,9 @@ on:
 jobs:
   deploy_dev:
     name: Deploy to Dev
-    # permissions:
-    #   contents: read
-    #   pull-requests: write
+    permissions:
+      contents: read
+      pull-requests: write
     uses: ./.github/workflows/reusable_env_action.yml
     with:
         environment: dev
